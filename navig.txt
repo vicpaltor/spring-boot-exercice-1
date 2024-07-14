@@ -1,0 +1,6 @@
+---------------------REST-------------------------
+--http://localhost:5432/api/rates      (POST) -> 1_Create a new rate
+--http://localhost:5432/api/rates/{id} (GET)  -> 2_Get rate by ID
+--http://localhost:5432/api/rates/{id} (PUT)  -> 3_Update the price of a rate
+--http://localhost:5432/api/rates/{id} (DELETE) -> 4_Delete a rate by ID
+--http://localhost:5432/api/rates      (GET) -> 5_Get rates based on brand id, product id and date

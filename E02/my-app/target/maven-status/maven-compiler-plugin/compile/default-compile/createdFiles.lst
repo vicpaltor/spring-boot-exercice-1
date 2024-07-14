@@ -1,0 +1,9 @@
+com\virtualcave\rateapi\api\domain\RateRepository.class
+com\virtualcave\rateapi\api\infrastructure\RateJpaRepository.class
+com\virtualcave\rateapi\RateApiApplication.class
+com\virtualcave\rateapi\api\infrastructure\client\CurrencyServiceClient$Currency.class
+com\virtualcave\rateapi\api\infrastructure\client\CurrencyServiceClient.class
+com\virtualcave\rateapi\api\application\RateService.class
+com\virtualcave\rateapi\api\domain\Rate.class
+com\virtualcave\rateapi\api\infrastructure\RateEntity.class
+com\virtualcave\rateapi\adapter\in\web\RateController.class

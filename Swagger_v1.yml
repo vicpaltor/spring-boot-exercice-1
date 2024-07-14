@@ -1,0 +1,186 @@
+openapi: 3.0.3
+info:
+  title: Rate Api
+  description: Handle the info about rates in the platform
+  version: "1.0"
+tags:
+- name: rates
+  description: Available operations for rates domain.
+paths:
+  /api/rates:
+    post:
+      tags:
+      - rates
+      summary: 1_Create a new rate
+      operationId: createRate
+      requestBody:
+        description: Rate object that needs to be added to the platform
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Rate'
+      responses:
+        201:
+          description: Rate created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rate'
+        400:
+          description: Invalid input
+    get:
+      tags:
+      - rates
+      summary: 5_Get rates based on brand id, product id and date
+      operationId: getRates
+      parameters:
+        - in: query
+          name: brandId
+          schema:
+            type: integer
+          required: true
+          description: The id of the brand
+        - in: query
+          name: productId
+          schema:
+            type: integer
+          required: true
+          description: The id of the product
+        - in: query
+          name: date
+          schema:
+            type: string
+            format: date
+          required: true
+          description: The date to find applicable rate
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Rate'
+        400:
+          description: Invalid parameters
+  /api/rates/{id}:
+    get:
+      tags:
+      - rates
+      summary: 2_Get rate by ID
+      operationId: getRateById
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: The id of the rate
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rate'
+        404:
+          description: Rate not found
+    put:
+      tags:
+      - rates
+      summary: 3_Update the price of a rate
+      operationId: updateRate
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: The id of the rate
+      requestBody:
+        description: New price for the rate
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                price:
+                  type: number
+                  format: float
+      responses:
+        200:
+          description: Rate updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rate'
+        400:
+          description: Invalid input
+        404:
+          description: Rate not found
+    delete:
+      tags:
+      - rates
+      summary: 4_Delete a rate by ID
+      operationId: deleteRate
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: The id of the rate
+      responses:
+        204:
+          description: Rate deleted successfully
+        404:
+          description: Rate not found
+components:
+  schemas:
+    Rate:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        brandId:
+          type: integer
+          example: 1
+        productId:
+          type: integer
+          example: 1
+        startDate:
+          type: string
+          format: date
+          example: "2022-01-01"
+        endDate:
+          type: string
+          format: date
+          example: "2022-05-31"
+        price:
+          type: number
+          format: float
+          example: 15.50
+        currencyCode:
+          type: string
+          example: "EUR"
+        currencySymbol:
+          type: string
+          example: "€"
+      required:
+        - brandId
+        - productId
+        - startDate
+        - endDate
+        - price
+        - currencyCode
+        - currencySymbol
+  securitySchemes:
+    basicAuth: 
+      type: http
+      scheme: basic
+security:
+  - basicAuth: []
