@@ -1,0 +1,157 @@
+{
+	"info": {
+		"_postman_id": "fbbbb6d5-eb3f-4bf4-91bf-144dea0d04e4",
+		"name": "E02",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10642365"
+	},
+	"item": [
+		{
+			"name": "Crear tarifa",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"brandId\": 1,\r\n    \"productId\": 1,\r\n    \"startDate\": \"2024-01-01\",\r\n    \"endDate\": \"2024-12-31\",\r\n    \"price\": 100.0,\r\n    \"currencyCode\": \"USD\",\r\n    \"currencySymbol\": \"$\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/rates",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"rates"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar tarifa",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/rates/9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"rates",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Tarifa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/rates/9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"rates",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar tarifa",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"price\": 400.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/rates/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"rates",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener tarifa con un determinado idBrand , idProducto y en un rango de fechas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/rates?brandId=2&productId=1&date=2024-01-01",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"rates"
+					],
+					"query": [
+						{
+							"key": "brandId",
+							"value": "2"
+						},
+						{
+							"key": "productId",
+							"value": "1"
+						},
+						{
+							"key": "date",
+							"value": "2024-01-01"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
